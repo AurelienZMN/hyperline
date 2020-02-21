@@ -1,18 +1,15 @@
-import React from 'react'
-import Component from 'hyper/component'
-import { currentLoad as cpuLoad } from 'systeminformation'
-import leftPad from 'left-pad'
-import SvgIcon from '../utils/svg-icon'
+import React from "react";
+import Component from "hyper/component";
+import { currentLoad as cpuLoad } from "systeminformation";
+import leftPad from "left-pad";
+import SvgIcon from "../utils/svg-icon";
 
 class PluginIcon extends Component {
   render() {
     return (
       <SvgIcon>
         <g fill="none" fillRule="evenodd">
-          <g
-            className='cpu-icon'
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g className="cpu-icon" transform="translate(1.000000, 1.000000)">
             <g>
               <path d="M3,3 L11,3 L11,11 L3,11 L3,3 Z M4,4 L10,4 L10,10 L4,10 L4,4 Z" />
               <rect x="5" y="5" width="4" height="4" />
@@ -37,25 +34,25 @@ class PluginIcon extends Component {
 
         <style jsx>{`
           .cpu-icon {
-            fill: #fff;
+            fill: #d8dee9;
           }
         `}</style>
       </SvgIcon>
-    )
+    );
   }
 }
 
 export default class Cpu extends Component {
   static displayName() {
-    return 'cpu'
+    return "cpu";
   }
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       cpuLoad: 0
-    }
+    };
   }
 
   getCpuLoad() {
@@ -63,30 +60,30 @@ export default class Cpu extends Component {
       this.setState({
         cpuLoad: leftPad(currentload.toFixed(2), 2, 0)
       })
-    )
+    );
   }
 
   componentDidMount() {
-    this.getCpuLoad()
-    this.interval = setInterval(() => this.getCpuLoad(), 2500)
+    this.getCpuLoad();
+    this.interval = setInterval(() => this.getCpuLoad(), 2500);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 
   render() {
     return (
-      <div className='wrapper'>
+      <div className="wrapper">
         <PluginIcon /> {this.state.cpuLoad}
-
         <style jsx>{`
           .wrapper {
             display: flex;
             align-items: center;
+            color: #eceff4;
           }
         `}</style>
       </div>
-    )
+    );
   }
 }

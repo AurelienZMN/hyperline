@@ -1,11 +1,10 @@
-import os from 'os'
-import React from 'react'
-import Component from 'hyper/component'
-import SvgIcon from '../utils/svg-icon'
+import os from "os";
+import React from "react";
+import Component from "hyper/component";
+import SvgIcon from "../utils/svg-icon";
 
 class PluginIcon extends Component {
   render() {
-    
     return (
       <SvgIcon>
         <g fill="none" fillRule="evenodd">
@@ -19,35 +18,35 @@ class PluginIcon extends Component {
 
         <style jsx>{`
           .hostname-icon {
-            fill: #fff;
+            fill: #d8dee9;
           }
         `}</style>
       </SvgIcon>
-    )
+    );
   }
 }
 
 export default class HostName extends Component {
   static displayName() {
-    return 'hostname'
+    return "hostname";
   }
 
   render() {
-    const hostname = os.hostname()
-    const username = process.env.USER
+    const hostname = os.hostname();
+    const username = process.env.USER;
 
     return (
       <div className="wrapper">
         <PluginIcon /> <span>{username}@</span>
         {hostname}
-
         <style jsx>{`
           .wrapper {
             display: flex;
             align-items: center;
+            color: #eceff4;
           }
         `}</style>
       </div>
-    )
+    );
   }
 }
